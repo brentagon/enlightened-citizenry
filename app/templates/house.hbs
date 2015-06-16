@@ -1,0 +1,32 @@
+<ul>
+{{#each model as |committee|}}
+  <li> <a {{action 'showSubcommittee' committee}}> {{committee.name}}</a></li>
+  <ul>
+    <li>ID: {{committee.committee_id}}</li>
+<!--
+    <div class="show-committee">
+      {{#each subcommittee in committee.subcommittees}}
+        {{subcommittee.name}}
+      {{/each}}
+    </div>
+     -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Subcommittees</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{#each subcommittee in currentComm.subcommittees}}
+            <li>{{subcommittee.name}}</li>
+            {{/each}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ul>
+  <p>{{outlet}}</p>
+{{/each}}
+</ul>

@@ -10,7 +10,11 @@ Router.map(function() {
     this.resource('contact', { path: 'contact/:zip'});
   });
   this.resource('congress-bills');
-  this.resource('committees');
+  this.resource('committees', function() {
+    this.resource('house', { path: 'house'}, function() {
+      this.resource('subcommittee-house');
+    });
+  });
 });
 
 export default Router;
